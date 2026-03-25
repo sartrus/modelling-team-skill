@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18035266693"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18035266693');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DraftPlan — Custom Financial Models in Excel | Startup & Small Business Projections</title>
+  <meta name="description" content="Get custom financial models in Excel for startups, small businesses, restaurants, coffee shops, real estate and DCF. Real formulas, scenarios and validation. Join the waitlist.">
+  <meta property="og:title" content="DraftPlan — Custom Financial Models in Excel">
+  <meta property="og:description" content="Custom Excel financial models for startups, small businesses, restaurants, coffee shops, real estate and DCF. Built fast with real formulas and scenarios.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://getdraftplan.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DraftPlan — Custom Financial Models in Excel">
+  <meta name="twitter:description" content="Custom Excel financial models for startups, small businesses, restaurants, coffee shops, real estate and DCF. Built fast with real formulas and scenarios.">
+  <meta property="og:image" content="https://getdraftplan.com/logo.png">
+  <meta name="twitter:image" content="https://getdraftplan.com/logo.png">
+  <link rel="canonical" href="https://getdraftplan.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DraftPlan",
+    "url": "https://getdraftplan.com",
+    "applicationCategory": "BusinessApplication",
+    "description": "AI-powered service that generates custom financial models in Excel with scenario analysis, real formulas, and quality validation.",
+    "offers": {
+      "@type": "Offer",
+      "price": "29",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-01-01",
+      "availability": "https://schema.org/PreOrder"
+    },
+    "operatingSystem": "Web"
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    :root {
+      --navy: #1F3864;
+      --navy-deep: #142647;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --bg-white: #FFFFFF;
+      --bg-light: #F9FAFB;
+      --bg-card: #F3F4F6;
+      --text-primary: #111827;
+      --text-secondary: #6B7280;
+      --text-muted: #9CA3AF;
+      --green: #059669;
+      --green-light: #ECFDF5;
+      --border-light: #E5E7EB;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --max-w: 1200px;
+      --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    body {
+      font-family: var(--font); color: var(--text-primary);
+      background: var(--bg-white); line-height: 1.6; font-size: 16px;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; }
+    h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+
+    /* ── Buttons ──────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 10px;
+      font-family: var(--font); font-size: 1rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-primary {
+      background: var(--accent); color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover); color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(37,99,235,0.45);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .btn-secondary:hover { background: var(--accent); color: #FFFFFF; }
+    .btn-sm { padding: 10px 22px; font-size: 0.9rem; }
+
+    /* ── Sections ─────────────────────────────────── */
+    section { padding: 72px 0; }
+    .section-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-heading { margin-bottom: 16px; color: var(--navy); }
+    .section-sub {
+      color: var(--text-secondary); font-size: 1.05rem;
+      max-width: 600px; margin-bottom: 44px;
+    }
+    .section-center { text-align: center; }
+    .section-center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ── Scroll animations ────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: 0.08s; }
+    .reveal.d2 { transition-delay: 0.16s; }
+    .reveal.d3 { transition-delay: 0.24s; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: var(--shadow-sm); }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; font-weight: 700; font-size: 1.25rem; color: var(--navy);
+    }
+    .nav-logo img { height: 42px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-secondary);
+      font-size: 0.88rem; font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta .btn { padding: 10px 22px; font-size: 0.88rem; }
+    .nav-cta a.btn-primary { color: #FFFFFF !important; }
+    .nav-cta a.btn-primary:hover { color: #FFFFFF !important; }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 32px; height: 32px; position: relative;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px; background: var(--navy);
+      position: absolute; left: 5px; transition: all 0.3s;
+    }
+    .hamburger span:nth-child(1) { top: 9px; }
+    .hamburger span:nth-child(2) { top: 15px; }
+    .hamburger span:nth-child(3) { top: 21px; }
+    .hamburger.active span:nth-child(1) { top: 15px; transform: rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { top: 15px; transform: rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: #fff; border-bottom: 1px solid var(--border-light);
+      padding: 20px 24px; box-shadow: var(--shadow-md);
+    }
+    .mobile-menu.active { display: block; }
+    .mobile-menu a {
+      display: block; padding: 12px 0; text-decoration: none;
+      color: var(--text-primary); font-weight: 500; font-size: 1rem;
+      border-bottom: 1px solid var(--bg-card);
+    }
+    .mobile-menu a:last-child { border: none; }
+
+    /* ════════════════ HERO ════════════════ */
+    .hero {
+      padding: 120px 0 80px;
+      background: linear-gradient(180deg, #F8FAFF 0%, #FFFFFF 100%);
+      position: relative;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      background: radial-gradient(ellipse at 80% 40%, rgba(37,99,235,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1.15fr;
+      gap: 56px; align-items: center;
+    }
+    .hero-text h1 { color: var(--navy); margin-bottom: 20px; }
+    .hero-text h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent) 0%, #7C3AED 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--text-secondary);
+      line-height: 1.7; margin-bottom: 32px; max-width: 500px;
+    }
+    .hero-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .hero-cta .btn { font-size: 1.02rem; padding: 15px 34px; }
+    .hero-note { font-size: 0.84rem; color: var(--text-muted); }
+
+    /* ── Interactive Excel mockup ─────────────────── */
+    .hero-visual { position: relative; }
+    .excel-mock {
+      background: #fff; border-radius: 14px;
+      box-shadow: var(--shadow-xl); overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: transform 0.4s; cursor: default;
+      position: relative;
+    }
+    .excel-mock:hover { transform: translateY(-4px); }
+    .excel-mock-label {
+      position: absolute; top: 42px; right: 10px; z-index: 10;
+      background: rgba(0,0,0,0.6); color: #fff; backdrop-filter: blur(4px);
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 3px 8px; border-radius: 4px; text-transform: uppercase;
+    }
+    .excel-titlebar {
+      background: #217346; padding: 10px 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .excel-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .excel-dot.r { background: #EF4444; } .excel-dot.y { background: #F59E0B; } .excel-dot.g { background: #10B981; }
+    .excel-titlebar-text {
+      margin-left: 8px; color: rgba(255,255,255,0.85);
+      font-size: 0.78rem; font-family: var(--mono);
+    }
+    .excel-ribbon {
+      background: #217346; display: flex; gap: 0; padding: 0 8px;
+      border-bottom: 1px solid #1A5C37;
+    }
+    .excel-ribbon span {
+      padding: 6px 14px; font-size: 0.72rem; font-weight: 500;
+      color: rgba(255,255,255,0.7); cursor: default;
+    }
+    .excel-ribbon span.active { color: #fff; background: rgba(255,255,255,0.12); border-radius: 4px 4px 0 0; }
+    .excel-formula-bar {
+      display: flex; align-items: center; background: #f3f3f3;
+      border-bottom: 1px solid #d4d4d4; padding: 4px 8px; gap: 8px;
+    }
+    .excel-formula-bar .cell-ref {
+      font-size: 0.72rem; font-family: var(--mono); color: #333;
+      background: #fff; border: 1px solid #ccc; padding: 2px 8px;
+      border-radius: 2px; min-width: 52px; text-align: center;
+    }
+    .excel-formula-bar .fx {
+      font-size: 0.72rem; font-style: italic; color: #666;
+      font-family: var(--mono);
+    }
+    .excel-formula-bar .formula-text {
+      font-size: 0.72rem; font-family: var(--mono); color: #333; flex: 1;
+    }
+    .excel-sheet-tabs {
+      display: flex; background: #e0e0e0; border-top: 1px solid #ccc;
+    }
+    .excel-sheet-tabs button {
+      padding: 6px 16px; font-size: 0.72rem; font-weight: 500;
+      color: #555; cursor: pointer; border: none; background: transparent;
+      border-right: 1px solid #ccc; font-family: var(--font);
+      transition: background 0.15s;
+    }
+    .excel-sheet-tabs button:hover { background: #eee; }
+    .excel-sheet-tabs button.active {
+      background: #fff; color: var(--navy); font-weight: 600;
+      border-bottom: 2px solid #217346;
+    }
+    .excel-grid {
+      background: #fff; min-height: 280px; position: relative;
+      font-family: var(--mono); font-size: 0.76rem;
+    }
+    .excel-grid table {
+      width: 100%; border-collapse: collapse;
+    }
+    .excel-grid th, .excel-grid td {
+      border: 1px solid #d4d4d4; padding: 4px 8px;
+      text-align: center; min-width: 80px; height: 22px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .excel-grid th {
+      background: #f3f3f3; color: #666; font-weight: 500;
+      font-size: 0.68rem; position: sticky; top: 0;
+    }
+    .excel-grid .row-num {
+      background: #f3f3f3; color: #666; font-weight: 400;
+      min-width: 32px; width: 32px; text-align: center;
+    }
+    .excel-grid .cell-header {
+      background: var(--navy); color: #fff; font-weight: 600;
+      font-family: var(--font); font-size: 0.74rem;
+    }
+    .excel-grid .cell-section {
+      background: #2F5496; color: #fff; font-weight: 600;
+      font-family: var(--font); font-size: 0.72rem; text-align: left;
+      padding-left: 10px;
+    }
+    .excel-grid .cell-label {
+      text-align: left; padding-left: 10px; font-family: var(--font);
+      font-weight: 500; color: #333; font-size: 0.76rem; background: #fff;
+    }
+    .excel-grid .cell-label.indent { padding-left: 20px; font-weight: 400; }
+    .excel-grid .cell-input { background: #EBF3FB; color: #0000FF; }
+    .excel-grid .cell-calc { background: #fff; color: #000; }
+    .excel-grid .cell-total {
+      background: #E2EFDA; color: #166534; font-weight: 700;
+      font-family: var(--font);
+    }
+    .excel-grid .cell-highlight {
+      background: #FFF2CC; font-weight: 600;
+    }
+    .excel-grid .cell-negative { color: #DC2626; }
+    .excel-grid .cell-scenario-box {
+      background: #FCE4D6; font-weight: 700; color: var(--navy);
+      font-family: var(--font); font-size: 0.82rem; cursor: pointer;
+      position: relative;
+    }
+    .excel-grid .cell-scenario-label {
+      text-align: left; padding-left: 10px; font-family: var(--font);
+      font-weight: 700; color: var(--navy); font-size: 0.78rem;
+      background: #FCE4D6;
+    }
+    .excel-grid .cell-scenario-display {
+      background: #FCE4D6; font-family: var(--font);
+      font-weight: 600; color: #9A3412; font-size: 0.76rem;
+    }
+    .scenario-dropdown {
+      position: absolute; top: 100%; left: 0; right: 0; z-index: 10;
+      background: #fff; border: 2px solid #2563EB;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .scenario-dropdown div {
+      padding: 5px 10px; cursor: pointer; font-size: 0.76rem;
+      font-family: var(--font); transition: background 0.1s;
+    }
+    .scenario-dropdown div:hover { background: #EBF3FB; }
+    .scenario-dropdown div.sel { background: #DBEAFE; font-weight: 600; }
+
+    .hero-badge {
+      position: absolute; bottom: -16px; right: -8px;
+      background: var(--green-light); border: 2px solid var(--green);
+      border-radius: 10px; padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: var(--shadow-md); animation: badgePulse 3s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 4px 16px rgba(5,150,105,0.15); }
+      50% { box-shadow: 0 4px 24px rgba(5,150,105,0.35); }
+    }
+    .hero-badge svg { color: var(--green); flex-shrink: 0; }
+    .hero-badge span { font-size: 0.8rem; font-weight: 600; color: #065F46; }
+
+    /* ── Tab content containers ────────────────────── */
+    .excel-tab-panel { display: none; }
+    .excel-tab-panel.active { display: block; }
+
+    /* ════════════════ PROBLEM ════════════════ */
+    .problem { background: var(--bg-light); }
+    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .problem-card {
+      background: #fff; border-radius: var(--radius); padding: 32px 24px;
+      border: 1px solid var(--border-light);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .problem-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 16px;
+    }
+    .problem-card:nth-child(1) .problem-icon { background: #FEF3C7; }
+    .problem-card:nth-child(2) .problem-icon { background: #DBEAFE; }
+    .problem-card:nth-child(3) .problem-icon { background: #FCE7F3; }
+    .problem-card blockquote {
+      font-size: 1rem; font-weight: 600; color: var(--navy);
+      margin-bottom: 10px; line-height: 1.4;
+    }
+    .problem-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    /* ════════════════ HOW IT WORKS ════════════════ */
+    .how-it-works { background: var(--bg-white); }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center; padding: 40px 0;
+      border-bottom: 1px solid var(--bg-card);
+    }
+    .step-row:last-child { border-bottom: none; }
+    .step-row.reverse .step-content { order: 2; }
+    .step-row.reverse .step-visual { order: 1; }
+    .step-content { }
+    .step-number-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #4F46E5);
+      color: #fff; font-size: 1.1rem; font-weight: 700;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+    }
+    .step-content h3 { margin-bottom: 12px; color: var(--navy); font-size: 1.3rem; }
+    .step-content p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ── Wizard mockup ───────────────────────────── */
+    .wizard-mock {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: var(--shadow-lg); border: 1px solid var(--border-light);
+      position: relative;
+    }
+    .wizard-mock::after {
+      content: 'Preview from product interface';
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(31,56,100,0.85); color: #fff;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 4px 10px; border-radius: 6px; z-index: 5;
+      text-transform: uppercase;
+    }
+    .wizard-mock * { pointer-events: none; }
+    .wizard-header {
+      background: linear-gradient(135deg, var(--navy), #2D4A7A);
+      padding: 16px 20px; color: #fff;
+    }
+    .wizard-header h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    .wizard-header p { font-size: 0.72rem; opacity: 0.7; }
+    .wizard-progress {
+      display: flex; gap: 4px; padding: 12px 20px; background: #f8f9fa;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .wizard-progress .dot {
+      flex: 1; height: 4px; border-radius: 2px; background: #E5E7EB;
+    }
+    .wizard-progress .dot.filled { background: var(--accent); }
+    .wizard-progress .dot.current { background: var(--accent); animation: dotPulse 1.5s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .wizard-body { padding: 20px; }
+    .wizard-field { margin-bottom: 16px; }
+    .wizard-field label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .wizard-field .fake-select,
+    .wizard-field .fake-input {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border-light);
+      border-radius: 8px; font-size: 0.88rem; color: var(--text-primary);
+      background: #fff; font-family: var(--font);
+    }
+    .wizard-field .fake-select { color: var(--text-secondary); }
+    .wizard-radio-group { display: flex; flex-direction: column; gap: 8px; }
+    .wizard-radio {
+      padding: 10px 14px; border: 1.5px solid var(--border-light);
+      border-radius: 8px; font-size: 0.85rem; color: var(--text-primary);
+      background: #fff; display: flex; align-items: center; gap: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .wizard-radio.selected {
+      border-color: var(--accent); background: #EFF6FF;
+    }
+    .wizard-radio .radio-dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 2px solid #ccc; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .wizard-radio.selected .radio-dot {
+      border-color: var(--accent);
+    }
+    .wizard-radio.selected .radio-dot::after {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .wizard-footer {
+      padding: 14px 20px; display: flex; justify-content: space-between;
+      align-items: center; border-top: 1px solid var(--border-light);
+    }
+    .wizard-toggle {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .wizard-toggle .toggle-track {
+      width: 34px; height: 18px; border-radius: 9px;
+      background: var(--accent); position: relative; flex-shrink: 0;
+    }
+    .wizard-toggle .toggle-track::after {
+      content: ''; position: absolute; top: 2px; left: 18px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .wizard-toggle .toggle-label {
+      font-size: 0.76rem; color: var(--text-secondary); font-weight: 500;
+    }
+    .wizard-footer .fake-btn {
+      padding: 8px 20px; background: var(--accent); color: #fff;
+      border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+      font-family: var(--font); border: none; cursor: default;
+    }
+
+    /* ── Agent flow ───────────────────────────────── */
+    .agent-flow {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; padding: 28px 16px;
+    }
+    .agent-node {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 16px 14px; background: #fff; border-radius: 12px;
+      border: 2px solid var(--border-light); min-width: 100px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .agent-node.active-agent {
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    .agent-node .agent-icon { font-size: 1.4rem; }
+    .agent-node .agent-name { font-size: 0.78rem; font-weight: 600; color: var(--navy); }
+    .agent-node .agent-model { font-size: 0.65rem; color: var(--text-muted); font-family: var(--mono); }
+    .agent-arrow { color: var(--accent); font-size: 1.2rem; font-weight: 700; }
+    .agent-check {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green); color: #fff; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(5,150,105,0.3);
+    }
+
+    /* ── Download mockup ─────────────────────────── */
+    .download-mock {
+      background: #fff; border-radius: 14px; padding: 28px;
+      box-shadow: var(--shadow-lg); border: 1px solid var(--border-light);
+      display: flex; align-items: center; gap: 20px;
+    }
+    .xlsx-icon {
+      width: 64px; height: 76px; background: #217346; border-radius: 6px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; color: #fff; flex-shrink: 0;
+      position: relative; box-shadow: 0 2px 8px rgba(33,115,70,0.3);
+    }
+    .xlsx-icon .x-letter { font-size: 1.8rem; font-weight: 800; line-height: 1; }
+    .xlsx-icon .x-label { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.8; }
+    .download-info h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 4px; }
+    .download-info p { font-size: 0.8rem; color: var(--text-muted); }
+    .download-info .file-meta {
+      display: flex; gap: 12px; margin-top: 8px;
+    }
+    .download-info .file-meta span {
+      font-size: 0.72rem; color: var(--text-muted);
+      background: var(--bg-card); padding: 3px 8px; border-radius: 4px;
+    }
+
+    /* ════════════════ FEATURES ════════════════ */
+    .features { background: var(--bg-light); }
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .feature-card {
+      background: #fff; border-radius: var(--radius); padding: 32px 28px;
+      border: 1px solid var(--border-light);
+      display: flex; gap: 18px; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .feature-card.highlight {
+      border-color: var(--green);
+      background: linear-gradient(135deg, #ECFDF5 0%, #fff 40%);
+    }
+    .feature-icon {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .feature-card:nth-child(1) .feature-icon { background: #DBEAFE; }
+    .feature-card:nth-child(2) .feature-icon { background: #EDE9FE; }
+    .feature-card:nth-child(3) .feature-icon { background: #ECFDF5; }
+    .feature-card:nth-child(4) .feature-icon { background: #FEF3C7; }
+    .feature-body h3 { margin-bottom: 8px; color: var(--navy); font-size: 1.1rem; }
+    .feature-body p { font-size: 0.9rem; color: var(--text-secondary); }
+    .feature-badge {
+      display: inline-block; margin-top: 8px;
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--green);
+      background: var(--green-light); padding: 3px 10px; border-radius: 6px;
+    }
+
+    /* ════════════════ EXAMPLE OUTPUT ════════════════ */
+    .example { background: var(--bg-white); }
+    .sample-cards {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+      max-width: 900px; margin: 0 auto; text-align: left;
+    }
+    .sample-card {
+      background: #fff; border-radius: var(--radius); padding: 28px 24px;
+      border: 1px solid var(--border-light);
+      display: flex; flex-direction: column; gap: 16px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .sample-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .xlsx-icon-lg {
+      width: 56px; height: 66px; background: #217346; border-radius: 8px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; color: #fff; flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(33,115,70,0.3);
+    }
+    .xlsx-icon-lg .x-letter { font-size: 1.6rem; font-weight: 800; line-height: 1; }
+    .xlsx-icon-lg .x-label { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.8; }
+    .sample-info h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; }
+    .sample-info p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+    .sample-meta {
+      display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;
+    }
+    .sample-meta span {
+      font-size: 0.72rem; color: var(--text-muted); font-weight: 500;
+      background: var(--bg-card); padding: 3px 10px; border-radius: 4px;
+    }
+    .sample-card .btn { align-self: flex-start; }
+
+    /* ════════════════ PERSONAS ════════════════ */
+    .personas { background: var(--bg-light); }
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .persona-card {
+      background: #fff; border-radius: var(--radius); padding: 32px 24px;
+      border: 1px solid var(--border-light); text-align: center;
+      transition: transform 0.3s;
+    }
+    .persona-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .persona-emoji { font-size: 2.2rem; margin-bottom: 14px; }
+    .persona-card h3 { color: var(--navy); margin-bottom: 12px; }
+    .persona-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    /* ════════════════ PRICING ════════════════ */
+    .pricing { background: var(--bg-white); }
+    .pricing-card {
+      max-width: 460px; margin: 0 auto;
+      background: #fff; border-radius: var(--radius-lg);
+      border: 2px solid var(--navy); overflow: hidden; box-shadow: var(--shadow-lg);
+    }
+    .pricing-header {
+      background: linear-gradient(135deg, var(--navy) 0%, #2D4A7A 100%);
+      padding: 32px 36px; text-align: center; color: #fff;
+    }
+    .pricing-label {
+      font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; opacity: 0.8; margin-bottom: 6px;
+    }
+    .pricing-amount { font-size: 2.6rem; font-weight: 700; margin-bottom: 2px; }
+    .pricing-unit { font-size: 0.9rem; opacity: 0.7; }
+    .pricing-body { padding: 32px 36px; }
+    .pricing-features { list-style: none; margin-bottom: 24px; }
+    .pricing-features li {
+      padding: 9px 0; font-size: 0.93rem; color: var(--text-primary);
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid var(--bg-card);
+    }
+    .pricing-features li:last-child { border: none; }
+    .pricing-features .check { color: var(--green); font-weight: 700; font-size: 1.1rem; }
+    .pricing-note {
+      text-align: center; font-size: 0.86rem; color: var(--text-secondary);
+      margin-bottom: 20px; line-height: 1.6;
+    }
+    .pricing-body .btn { width: 100%; justify-content: center; }
+    .pricing-compare {
+      text-align: center; max-width: 620px; margin: 28px auto 0;
+      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;
+    }
+
+    /* ════════════════ COMPARISON ════════════════ */
+    .comparison { background: var(--bg-light); }
+    .comparison-table-wrap {
+      overflow-x: auto; border-radius: var(--radius);
+      border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
+    }
+    .comparison-table {
+      width: 100%; border-collapse: collapse; background: #fff; font-size: 0.88rem;
+    }
+    .comparison-table thead th {
+      padding: 14px 18px; text-align: center;
+      font-weight: 600; color: var(--text-secondary); font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      background: var(--bg-card); border-bottom: 2px solid var(--border-light);
+    }
+    .comparison-table thead th:first-child { text-align: left; }
+    .comparison-table thead th:nth-child(2) {
+      background: var(--navy); color: #fff;
+    }
+    .comparison-table tbody td {
+      padding: 12px 18px; text-align: center;
+      border-bottom: 1px solid var(--bg-card);
+    }
+    .comparison-table tbody td:first-child {
+      text-align: left; font-weight: 500; color: var(--text-primary);
+    }
+    .comparison-table tbody td:nth-child(2) {
+      background: #F0F5FF; font-weight: 600; color: var(--navy);
+    }
+    .comparison-table .check-mark { color: var(--green); font-weight: 700; }
+    .comparison-table .x-mark { color: #DC2626; }
+    .comparison-note {
+      margin-top: 14px; font-size: 0.8rem; color: var(--text-muted); font-style: italic;
+    }
+
+    /* ════════════════ WAITLIST ════════════════ */
+    .waitlist {
+      background: linear-gradient(180deg, #F0F5FF 0%, #E8EDFF 100%);
+      position: relative;
+    }
+    .waitlist::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .waitlist-card {
+      max-width: 520px; margin: 0 auto;
+      background: #fff; border-radius: var(--radius-lg);
+      padding: 44px 40px; box-shadow: var(--shadow-lg);
+      position: relative; text-align: center;
+    }
+    .waitlist-card h2 { margin-bottom: 6px; color: var(--navy); }
+    .waitlist-card .subtitle {
+      color: var(--text-secondary); margin-bottom: 28px; font-size: 1rem;
+    }
+    .waitlist-form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .form-group label {
+      display: block; font-size: 0.84rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 5px;
+    }
+    .form-group label .optional {
+      font-weight: 400; color: var(--text-muted); font-size: 0.78rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border-light); border-radius: 8px;
+      font-family: var(--font); font-size: 0.93rem;
+      transition: border-color 0.2s, box-shadow 0.2s; background: #fff;
+    }
+    .form-group textarea {
+      resize: vertical; min-height: 60px; max-height: 140px;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+    .waitlist-form .btn {
+      width: 100%; justify-content: center; margin-top: 4px;
+      font-size: 1.02rem; color: #FFFFFF;
+    }
+    .waitlist-note { margin-top: 14px; font-size: 0.8rem; color: var(--text-muted); }
+    .waitlist-success { display: none; text-align: center; padding: 24px 0; }
+    .waitlist-success .success-icon { font-size: 3rem; margin-bottom: 14px; }
+    .waitlist-success h3 { color: var(--navy); margin-bottom: 8px; }
+    .waitlist-success p { color: var(--text-secondary); }
+
+    /* ════════════════ FOOTER ════════════════ */
+    footer {
+      background: var(--navy-deep); color: rgba(255,255,255,0.6); padding: 36px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 14px;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 10px;
+      color: #fff; font-weight: 600; font-size: 0.95rem;
+    }
+    .footer-brand img { height: 34px; filter: brightness(1.2); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      font-size: 0.84rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.9); }
+    .footer-copy { font-size: 0.8rem; }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { order: -1; }
+      .hero-text { text-align: center; }
+      .hero-text h1 { font-size: 2rem; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-cta { align-items: center; }
+      .problem-grid, .persona-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .sample-cards { grid-template-columns: 1fr; }
+      .step-row { grid-template-columns: 1fr; gap: 24px; }
+      .step-row.reverse .step-content { order: 1; }
+      .step-row.reverse .step-visual { order: 2; }
+      .comparison-table { font-size: 0.8rem; }
+      .comparison-table thead th, .comparison-table tbody td { padding: 10px 12px; }
+      .waitlist-card { padding: 32px 22px; }
+      .pricing-header, .pricing-body { padding: 26px 22px; }
+      .agent-flow { flex-wrap: wrap; }
+      .agent-arrow { display: none; }
+      .agent-node { min-width: 80px; padding: 12px 10px; }
+      .footer-inner { flex-direction: column; text-align: center; gap: 12px; }
+      .footer-links { justify-content: center; }
+      .section-sub { font-size: 0.95rem; }
+      .download-mock { flex-direction: column; text-align: center; }
+      .step-content h3 { font-size: 1.15rem; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 48px 0; }
+      .container { padding: 0 16px; }
+      .hero { padding: 90px 0 50px; }
+      h1 { font-size: 1.7rem; }
+      h2 { font-size: 1.4rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-cta .btn { width: 100%; justify-content: center; padding: 14px 20px; font-size: 0.95rem; }
+      .hero-note { text-align: center; }
+      .excel-mock { border-radius: 10px; }
+      .excel-mock-label { font-size: 0.55rem; padding: 2px 6px; top: 38px; right: 6px; }
+      .excel-grid { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .excel-grid table { min-width: 420px; }
+      .excel-grid th, .excel-grid td { padding: 3px 5px; font-size: 0.66rem; min-width: 56px; }
+      .excel-sheet-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .excel-sheet-tabs button { white-space: nowrap; padding: 6px 12px; }
+      .problem-card { padding: 24px 18px; }
+      .problem-card blockquote { font-size: 0.92rem; }
+      .problem-card p { font-size: 0.85rem; }
+      .feature-card { padding: 24px 18px; flex-direction: column; }
+      .persona-card { padding: 24px 18px; }
+      .persona-card p { font-size: 0.85rem; }
+      .pricing-card { border-radius: 14px; }
+      .pricing-amount { font-size: 2.2rem; }
+      .pricing-features li { font-size: 0.88rem; }
+      .comparison-table-wrap { margin: 0 -16px; border-radius: 0; border-left: none; border-right: none; }
+      .comparison-table { min-width: 560px; }
+      .comparison-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .waitlist-card { padding: 28px 18px; border-radius: 14px; }
+      .waitlist-card h2 { font-size: 1.3rem; }
+      .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
+      .btn { padding: 12px 24px; }
+      .wizard-mock { border-radius: 10px; }
+      .wizard-body { padding: 14px; }
+      .wizard-field label { font-size: 0.78rem; }
+      .wizard-radio { font-size: 0.8rem; padding: 8px 10px; }
+      .sample-card { padding: 20px 18px; }
+      .sample-info h3 { font-size: 0.95rem; }
+      .sample-info p { font-size: 0.82rem; }
+      .mobile-menu { top: 68px; }
+      .mobile-menu a { padding: 14px 0; font-size: 1.05rem; min-height: 44px; display: flex; align-items: center; }
+    }
+  </style>
+  <script defer src="/stats/script.js" data-website-id="f9124db3-9ec0-448c-a5f6-5dd4ee2df9ed"></script>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="DraftPlan">
+      <span>DraftPlan</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#features">What You Get</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li class="nav-cta"><a href="#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#features">What You Get</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#waitlist">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text reveal">
+        <h1>Custom Financial Models in <em>Excel</em>, Built in&nbsp;Minutes</h1>
+        <p class="hero-sub">Get a custom financial model built from your inputs. DraftPlan creates editable Excel projections for startups, small businesses, restaurants, coffee shops, real estate, and DCF valuation use cases.</p>
+        <div class="hero-cta">
+          <a href="#waitlist" class="btn btn-primary">Join the Waitlist &mdash; First Model Free</a>
+          <span class="hero-note">Startup models, restaurant projections, coffee shop forecasts, real estate and DCF.</span>
+        </div>
+      </div>
+      <div class="hero-visual reveal d2">
+        <div class="excel-mock" id="excelMock">
+          <span class="excel-mock-label">Interactive preview &mdash; try the scenario selector &amp; tabs</span>
+          <div class="excel-titlebar">
+            <span class="excel-dot r"></span>
+            <span class="excel-dot y"></span>
+            <span class="excel-dot g"></span>
+            <span class="excel-titlebar-text">my-coffee-shop-model.xlsx &mdash; Excel</span>
+          </div>
+          <div class="excel-ribbon">
+            <span class="active">Home</span>
+            <span>Formulas</span>
+            <span>Data</span>
+            <span>View</span>
+          </div>
+          <div class="excel-formula-bar">
+            <span class="cell-ref" id="cellRef">B3</span>
+            <span class="fx">fx</span>
+            <span class="formula-text" id="formulaText">=CHOOSE(B2,"Conservative","Base","Optimistic")</span>
+          </div>
+
+          <!-- Tab: Dashboard -->
+          <div class="excel-tab-panel active" id="panel-dashboard">
+            <div class="excel-grid">
+              <table>
+                <tr>
+                  <th style="width:32px;"></th>
+                  <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>
+                </tr>
+                <tr>
+                  <td class="row-num">1</td>
+                  <td colspan="5" class="cell-header">Coffee Shop &mdash; Financial Dashboard</td>
+                </tr>
+                <tr>
+                  <td class="row-num">2</td>
+                  <td class="cell-scenario-label">Scenario Selector</td>
+                  <td class="cell-scenario-box" id="scenarioCell">
+                    <span id="scenarioValue">2</span>
+                    <div class="scenario-dropdown" id="scenarioDropdown" style="display:none;">
+                      <div data-val="1">1 &mdash; Conservative</div>
+                      <div data-val="2" class="sel">2 &mdash; Base</div>
+                      <div data-val="3">3 &mdash; Optimistic</div>
+                    </div>
+                  </td>
+                  <td class="cell-scenario-display" id="scenarioLabel">Base</td>
+                  <td class="cell-calc"></td>
+                  <td class="cell-calc"></td>
+                </tr>
+                <tr>
+                  <td class="row-num">3</td>
+                  <td class="cell-label"></td>
+                  <td class="cell-calc"></td>
+                  <td class="cell-calc"></td>
+                  <td class="cell-calc"></td>
+                  <td class="cell-calc"></td>
+                </tr>
+                <tr>
+                  <td class="row-num">4</td>
+                  <td colspan="5" class="cell-section">Key Metrics</td>
+                </tr>
+                <tr>
+                  <td class="row-num">5</td>
+                  <td class="cell-label"></td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 1</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 2</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 3</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 4</td>
+                </tr>
+                <tr>
+                  <td class="row-num">6</td>
+                  <td class="cell-label">Revenue</td>
+                  <td class="cell-calc" id="r-rev-1">$284,400</td>
+                  <td class="cell-calc" id="r-rev-2">$341,280</td>
+                  <td class="cell-calc" id="r-rev-3">$392,472</td>
+                  <td class="cell-calc" id="r-rev-4">$431,719</td>
+                </tr>
+                <tr>
+                  <td class="row-num">7</td>
+                  <td class="cell-label">COGS</td>
+                  <td class="cell-calc" id="r-cogs-1">($113,760)</td>
+                  <td class="cell-calc" id="r-cogs-2">($129,686)</td>
+                  <td class="cell-calc" id="r-cogs-3">($141,290)</td>
+                  <td class="cell-calc" id="r-cogs-4">($151,102)</td>
+                </tr>
+                <tr>
+                  <td class="row-num">8</td>
+                  <td class="cell-label" style="font-weight:600;">Gross Profit</td>
+                  <td class="cell-calc" id="r-gp-1" style="font-weight:600;">$170,640</td>
+                  <td class="cell-calc" id="r-gp-2" style="font-weight:600;">$211,594</td>
+                  <td class="cell-calc" id="r-gp-3" style="font-weight:600;">$251,182</td>
+                  <td class="cell-calc" id="r-gp-4" style="font-weight:600;">$280,617</td>
+                </tr>
+                <tr>
+                  <td class="row-num">9</td>
+                  <td class="cell-label">OpEx</td>
+                  <td class="cell-calc" id="r-opex-1">($127,980)</td>
+                  <td class="cell-calc" id="r-opex-2">($143,338)</td>
+                  <td class="cell-calc" id="r-opex-3">($156,989)</td>
+                  <td class="cell-calc" id="r-opex-4">($168,371)</td>
+                </tr>
+                <tr>
+                  <td class="row-num">10</td>
+                  <td class="cell-label" style="font-weight:700;">EBITDA</td>
+                  <td class="cell-total" id="r-ebitda-1">$42,660</td>
+                  <td class="cell-total" id="r-ebitda-2">$68,256</td>
+                  <td class="cell-total" id="r-ebitda-3">$94,193</td>
+                  <td class="cell-total" id="r-ebitda-4">$112,246</td>
+                </tr>
+                <tr>
+                  <td class="row-num">11</td>
+                  <td class="cell-label">EBITDA Margin</td>
+                  <td class="cell-highlight" id="r-margin-1">15.0%</td>
+                  <td class="cell-highlight" id="r-margin-2">20.0%</td>
+                  <td class="cell-highlight" id="r-margin-3">24.0%</td>
+                  <td class="cell-highlight" id="r-margin-4">26.0%</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab: Assumptions -->
+          <div class="excel-tab-panel" id="panel-assumptions">
+            <div class="excel-grid">
+              <table>
+                <tr>
+                  <th style="width:32px;"></th>
+                  <th>A</th><th>B</th><th>C</th><th>D</th>
+                </tr>
+                <tr>
+                  <td class="row-num">1</td>
+                  <td colspan="4" class="cell-header">Assumptions</td>
+                </tr>
+                <tr>
+                  <td class="row-num">2</td>
+                  <td class="cell-label" style="font-weight:600;"></td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Conservative</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Base</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Optimistic</td>
+                </tr>
+                <tr>
+                  <td class="row-num">3</td>
+                  <td colspan="4" class="cell-section">Revenue Drivers</td>
+                </tr>
+                <tr>
+                  <td class="row-num">4</td>
+                  <td class="cell-label">Avg daily customers</td>
+                  <td class="cell-input" id="a-cust-lo">120</td>
+                  <td class="cell-input" id="a-cust-ba">160</td>
+                  <td class="cell-input" id="a-cust-hi">210</td>
+                </tr>
+                <tr>
+                  <td class="row-num">5</td>
+                  <td class="cell-label">Avg ticket ($)</td>
+                  <td class="cell-input">$5.50</td>
+                  <td class="cell-input">$6.50</td>
+                  <td class="cell-input">$7.50</td>
+                </tr>
+                <tr>
+                  <td class="row-num">6</td>
+                  <td class="cell-label">Growth rate (YoY)</td>
+                  <td class="cell-input">8%</td>
+                  <td class="cell-input">15%</td>
+                  <td class="cell-input">22%</td>
+                </tr>
+                <tr>
+                  <td class="row-num">7</td>
+                  <td colspan="4" class="cell-section">Cost Drivers</td>
+                </tr>
+                <tr>
+                  <td class="row-num">8</td>
+                  <td class="cell-label">COGS (% of revenue)</td>
+                  <td class="cell-input">42%</td>
+                  <td class="cell-input">40%</td>
+                  <td class="cell-input">36%</td>
+                </tr>
+                <tr>
+                  <td class="row-num">9</td>
+                  <td class="cell-label">Monthly rent</td>
+                  <td class="cell-input">$4,500</td>
+                  <td class="cell-input">$4,500</td>
+                  <td class="cell-input">$4,500</td>
+                </tr>
+                <tr>
+                  <td class="row-num">10</td>
+                  <td class="cell-label">Staff (FTEs)</td>
+                  <td class="cell-input">4</td>
+                  <td class="cell-input">5</td>
+                  <td class="cell-input">6</td>
+                </tr>
+                <tr>
+                  <td class="row-num">11</td>
+                  <td class="cell-label">Avg salary / FTE</td>
+                  <td class="cell-input">$32,000</td>
+                  <td class="cell-input">$35,000</td>
+                  <td class="cell-input">$38,000</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab: P&L -->
+          <div class="excel-tab-panel" id="panel-pnl">
+            <div class="excel-grid">
+              <table>
+                <tr>
+                  <th style="width:32px;"></th>
+                  <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>
+                </tr>
+                <tr>
+                  <td class="row-num">1</td>
+                  <td colspan="5" class="cell-header">Profit &amp; Loss Statement</td>
+                </tr>
+                <tr>
+                  <td class="row-num">2</td>
+                  <td class="cell-label" style="font-weight:600;"></td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 1</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 2</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 3</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Year 4</td>
+                </tr>
+                <tr>
+                  <td class="row-num">3</td>
+                  <td class="cell-label" style="font-weight:600;">Revenue</td>
+                  <td class="cell-calc" id="p-rev-1">$284,400</td>
+                  <td class="cell-calc" id="p-rev-2">$341,280</td>
+                  <td class="cell-calc" id="p-rev-3">$392,472</td>
+                  <td class="cell-calc" id="p-rev-4">$431,719</td>
+                </tr>
+                <tr>
+                  <td class="row-num">4</td>
+                  <td class="cell-label indent">Cost of Goods Sold</td>
+                  <td class="cell-calc cell-negative" id="p-cogs-1">($113,760)</td>
+                  <td class="cell-calc cell-negative" id="p-cogs-2">($129,686)</td>
+                  <td class="cell-calc cell-negative" id="p-cogs-3">($141,290)</td>
+                  <td class="cell-calc cell-negative" id="p-cogs-4">($151,102)</td>
+                </tr>
+                <tr>
+                  <td class="row-num">5</td>
+                  <td class="cell-label" style="font-weight:700;">Gross Profit</td>
+                  <td class="cell-total" id="p-gp-1">$170,640</td>
+                  <td class="cell-total" id="p-gp-2">$211,594</td>
+                  <td class="cell-total" id="p-gp-3">$251,182</td>
+                  <td class="cell-total" id="p-gp-4">$280,617</td>
+                </tr>
+                <tr>
+                  <td class="row-num">6</td>
+                  <td class="cell-label indent">Rent</td>
+                  <td class="cell-calc">($54,000)</td>
+                  <td class="cell-calc">($54,000)</td>
+                  <td class="cell-calc">($54,000)</td>
+                  <td class="cell-calc">($54,000)</td>
+                </tr>
+                <tr>
+                  <td class="row-num">7</td>
+                  <td class="cell-label indent">Payroll</td>
+                  <td class="cell-calc" id="p-pay-1">($175,000)</td>
+                  <td class="cell-calc" id="p-pay-2">($182,000)</td>
+                  <td class="cell-calc" id="p-pay-3">($189,280)</td>
+                  <td class="cell-calc" id="p-pay-4">($196,851)</td>
+                </tr>
+                <tr>
+                  <td class="row-num">8</td>
+                  <td class="cell-label indent">Marketing</td>
+                  <td class="cell-calc">($8,532)</td>
+                  <td class="cell-calc">($10,238)</td>
+                  <td class="cell-calc">($11,774)</td>
+                  <td class="cell-calc">($12,952)</td>
+                </tr>
+                <tr>
+                  <td class="row-num">9</td>
+                  <td class="cell-label" style="font-weight:700;">Net Income</td>
+                  <td class="cell-total" id="p-ni-1">$28,440</td>
+                  <td class="cell-total" id="p-ni-2">$51,192</td>
+                  <td class="cell-total" id="p-ni-3">$74,518</td>
+                  <td class="cell-total" id="p-ni-4">$95,165</td>
+                </tr>
+                <tr>
+                  <td class="row-num">10</td>
+                  <td class="cell-label">Net Margin</td>
+                  <td class="cell-highlight" id="p-nm-1">10.0%</td>
+                  <td class="cell-highlight" id="p-nm-2">15.0%</td>
+                  <td class="cell-highlight" id="p-nm-3">19.0%</td>
+                  <td class="cell-highlight" id="p-nm-4">22.0%</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab: Validation -->
+          <div class="excel-tab-panel" id="panel-validation">
+            <div class="excel-grid">
+              <table>
+                <tr>
+                  <th style="width:32px;"></th>
+                  <th style="min-width:200px;">A</th><th>B</th><th>C</th>
+                </tr>
+                <tr>
+                  <td class="row-num">1</td>
+                  <td colspan="3" class="cell-header">Model Validation Report</td>
+                </tr>
+                <tr>
+                  <td class="row-num">2</td>
+                  <td class="cell-label" style="font-weight:600;">Check</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Status</td>
+                  <td class="cell-calc" style="font-weight:600;color:#555;font-family:var(--font);font-size:0.7rem;">Details</td>
+                </tr>
+                <tr>
+                  <td class="row-num">3</td>
+                  <td class="cell-label">Formula integrity</td>
+                  <td class="cell-total" style="text-align:center;">PASS</td>
+                  <td class="cell-calc" style="font-size:0.7rem;text-align:left;padding-left:8px;">47 formulas checked</td>
+                </tr>
+                <tr>
+                  <td class="row-num">4</td>
+                  <td class="cell-label">Scenario selector wiring</td>
+                  <td class="cell-total" style="text-align:center;">PASS</td>
+                  <td class="cell-calc" style="font-size:0.7rem;text-align:left;padding-left:8px;">All 3 scenarios resolve</td>
+                </tr>
+                <tr>
+                  <td class="row-num">5</td>
+                  <td class="cell-label">Cross-sheet links</td>
+                  <td class="cell-total" style="text-align:center;">PASS</td>
+                  <td class="cell-calc" style="font-size:0.7rem;text-align:left;padding-left:8px;">12 links verified</td>
+                </tr>
+                <tr>
+                  <td class="row-num">6</td>
+                  <td class="cell-label">Balance check (A = L + E)</td>
+                  <td class="cell-total" style="text-align:center;">PASS</td>
+                  <td class="cell-calc" style="font-size:0.7rem;text-align:left;padding-left:8px;">Balanced to $0</td>
+                </tr>
+                <tr>
+                  <td class="row-num">7</td>
+                  <td class="cell-label">Division by zero guards</td>
+                  <td class="cell-total" style="text-align:center;">PASS</td>
+                  <td class="cell-calc" style="font-size:0.7rem;text-align:left;padding-left:8px;">8 guards present</td>
+                </tr>
+                <tr>
+                  <td class="row-num">8</td>
+                  <td class="cell-label">Assumption reasonableness</td>
+                  <td class="cell-total" style="text-align:center;">PASS</td>
+                  <td class="cell-calc" style="font-size:0.7rem;text-align:left;padding-left:8px;">Within industry range</td>
+                </tr>
+                <tr>
+                  <td class="row-num">9</td>
+                  <td class="cell-label" style="font-weight:700;">Overall Verdict</td>
+                  <td class="cell-total" style="text-align:center;font-weight:700;font-size:0.82rem;">PASS</td>
+                  <td class="cell-calc" style="font-size:0.7rem;text-align:left;padding-left:8px;">Model is clean</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="excel-sheet-tabs">
+            <button class="active" data-panel="panel-dashboard">Dashboard</button>
+            <button data-panel="panel-assumptions">Assumptions</button>
+            <button data-panel="panel-pnl">P&L</button>
+            <button data-panel="panel-validation" style="color:#059669;font-weight:600;">Validation &#10003;</button>
+          </div>
+        </div>
+        <div class="hero-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Quality Validated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROBLEM ═══════ -->
+<section class="problem" id="problem">
+  <div class="container section-center">
+    <span class="section-label">The Problem</span>
+    <h2 class="section-heading">Sound familiar?</h2>
+    <p class="section-sub">You need financial projections. But every path is painful.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">&#9200;</div>
+        <blockquote>"I spent two weeks on a spreadsheet and it still doesn't work."</blockquote>
+        <p>Building financial models from scratch takes 15&ndash;60 hours. Most people give up or produce something they can't trust.</p>
+      </div>
+      <div class="problem-card reveal d1">
+        <div class="problem-icon">&#128176;</div>
+        <blockquote>"A freelancer quoted me $1,500. For a spreadsheet."</blockquote>
+        <p>Hiring a financial analyst costs $300&ndash;$3,000. For many founders and managers, that's not in the budget.</p>
+      </div>
+      <div class="problem-card reveal d2">
+        <div class="problem-icon">&#129300;</div>
+        <blockquote>"I don't even know what a DCF is."</blockquote>
+        <p>You shouldn't need a finance degree to project your business's future. But every template assumes you have one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HOW IT WORKS ═══════ -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="section-center">
+      <span class="section-label">Simple Process</span>
+      <h2 class="section-heading">How DraftPlan Works</h2>
+      <p class="section-sub">Three steps. Five minutes. A custom Excel financial model you can trust.</p>
+    </div>
+    <div class="steps">
+
+      <!-- Step 1 -->
+      <div class="step-row reveal">
+        <div class="step-content">
+          <div class="step-number-badge">1</div>
+          <h3>Describe Your Business</h3>
+          <p>Answer a few simple questions about your revenue, costs, and goals. Our wizard guides you &mdash; no jargon, no blank spreadsheets. Smart defaults handle the rest. Not ready to share your numbers? Hit "Prefill with dummy data" to explore first &mdash; then customize everything locally.</p>
+        </div>
+        <div class="step-visual">
+          <div class="wizard-mock">
+            <div class="wizard-header">
+              <h4>Build Your Financial Model</h4>
+              <p>Step 1 of 4 &mdash; Tell us about your business</p>
+            </div>
+            <div class="wizard-progress">
+              <div class="dot current"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+            <div class="wizard-body">
+              <div class="wizard-field">
+                <label>What type of business?</label>
+                <div class="fake-select">Coffee Shop / Restaurant</div>
+              </div>
+              <div class="wizard-field">
+                <label>What do you want to figure out?</label>
+                <div class="wizard-radio-group">
+                  <div class="wizard-radio selected">
+                    <div class="radio-dot"></div>
+                    Revenue &amp; profit projections
+                  </div>
+                  <div class="wizard-radio">
+                    <div class="radio-dot"></div>
+                    Startup costs &amp; break-even
+                  </div>
+                  <div class="wizard-radio">
+                    <div class="radio-dot"></div>
+                    Business valuation (DCF)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wizard-footer">
+              <div class="wizard-toggle">
+                <div class="toggle-track"></div>
+                <span class="toggle-label">Prefill with dummy data</span>
+              </div>
+              <span class="fake-btn">Continue &rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-row reverse reveal">
+        <div class="step-content">
+          <div class="step-number-badge">2</div>
+          <h3>AI Builds Your Model</h3>
+          <p>Three specialized AI agents work together: one designs the structure, one builds the spreadsheet, and one stress-tests every formula. This is why your model is reliable &mdash; not just fast.</p>
+        </div>
+        <div class="step-visual">
+          <div class="agent-flow" id="agentFlow">
+            <div class="agent-node" id="agent-architect">
+              <span class="agent-icon">&#128209;</span>
+              <span class="agent-name">Architect</span>
+              <span class="agent-model">designs structure</span>
+            </div>
+            <span class="agent-arrow">&rarr;</span>
+            <div class="agent-node" id="agent-coder">
+              <span class="agent-icon">&#128187;</span>
+              <span class="agent-name">Coder</span>
+              <span class="agent-model">builds spreadsheet</span>
+            </div>
+            <span class="agent-arrow">&rarr;</span>
+            <div class="agent-node" id="agent-challenger">
+              <span class="agent-icon">&#128737;&#65039;</span>
+              <span class="agent-name">Challenger</span>
+              <span class="agent-model">stress-tests formulas</span>
+            </div>
+            <span class="agent-arrow">&rarr;</span>
+            <div class="agent-check">&#10003;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-row reveal">
+        <div class="step-content">
+          <div class="step-number-badge">3</div>
+          <h3>Download &amp; Present</h3>
+          <p>Get a polished Excel file with real formulas, scenario analysis (Conservative / Expected / Optimistic), and a validation report. Open it, tweak it, present it.</p>
+        </div>
+        <div class="step-visual">
+          <div class="download-mock">
+            <div class="xlsx-icon">
+              <span class="x-letter">X</span>
+              <span class="x-label">.XLSX</span>
+            </div>
+            <div class="download-info">
+              <h4>my-coffee-shop-model.xlsx</h4>
+              <p>5 tabs &bull; 3 scenarios &bull; Validation report included</p>
+              <div class="file-meta">
+                <span>21.2 KB</span>
+                <span>Dashboard</span>
+                <span>Assumptions</span>
+                <span>P&L</span>
+                <span>Validation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FEATURES ═══════ -->
+<section class="features" id="features">
+  <div class="container section-center">
+    <span class="section-label">Included in Every Model</span>
+    <h2 class="section-heading">What's Inside Every Model</h2>
+    <p class="section-sub">Not a template. A custom model built for your business.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128260;</div>
+        <div class="feature-body">
+          <h3>Scenario Analysis</h3>
+          <p>Every model comes with three scenarios: Conservative, Expected, and Optimistic. One-click toggle in Excel &mdash; change the scenario and the entire model recalculates instantly.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal d1">
+        <div class="feature-icon">&#402;</div>
+        <div class="feature-body">
+          <h3>Real Excel Formulas</h3>
+          <p>No hardcoded numbers. Every cell contains a real Excel formula you can inspect, modify, and extend. Blue cells are inputs. Black cells are calculations. Fully transparent.</p>
+        </div>
+      </div>
+      <div class="feature-card highlight reveal d2">
+        <div class="feature-icon">&#128737;&#65039;</div>
+        <div class="feature-body">
+          <h3>Quality Checked</h3>
+          <p>Before you download, an adversarial AI reviewer stress-tests every formula, validates scenario wiring, and checks for errors. You get a Validation Report showing exactly what was checked.</p>
+          <span class="feature-badge">Key Differentiator</span>
+        </div>
+      </div>
+      <div class="feature-card reveal d3">
+        <div class="feature-icon">&#9889;</div>
+        <div class="feature-body">
+          <h3>Ready in Minutes</h3>
+          <p>A freelancer takes days. DIY takes weeks. DraftPlan delivers a professional model in under 5 minutes. Time you can spend running your business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EXAMPLE OUTPUT ═══════ -->
+<section class="example" id="example">
+  <div class="container section-center">
+    <span class="section-label">Real Output</span>
+    <h2 class="section-heading">See What You'll Get</h2>
+    <p class="section-sub">These are actual models generated by DraftPlan. Download, open in Excel, and inspect every formula yourself. Common models include startup forecasts, restaurant projections, coffee shop models, real estate investment models, and DCF valuation models.</p>
+    <div class="sample-cards">
+      <div class="sample-card reveal">
+        <div class="xlsx-icon-lg">
+          <span class="x-letter">X</span>
+          <span class="x-label">.XLSX</span>
+        </div>
+        <div class="sample-info">
+          <h3>Coffee Shop Financial Model</h3>
+          <p>3-year projections with revenue drivers, cost breakdown, and scenario analysis. 5 tabs including Dashboard, Assumptions, P&L, and Validation Report.</p>
+          <div class="sample-meta">
+            <span>5 tabs</span>
+            <span>3 scenarios</span>
+            <span>Validated</span>
+          </div>
+        </div>
+        <a href="sample_models/test-coffee-shop.xlsx" class="btn btn-secondary btn-sm" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .xlsx
+        </a>
+      </div>
+      <div class="sample-card reveal d1">
+        <div class="xlsx-icon-lg">
+          <span class="x-letter">X</span>
+          <span class="x-label">.XLSX</span>
+        </div>
+        <div class="sample-info">
+          <h3>Real Estate Investment Model</h3>
+          <p>Rental property analysis with cash flow projections, cap rate, IRR, and debt service coverage. Full scenario toggle for Conservative / Base / Optimistic.</p>
+          <div class="sample-meta">
+            <span>Multi-tab</span>
+            <span>3 scenarios</span>
+            <span>Validated</span>
+          </div>
+        </div>
+        <a href="sample_models/test-real-estate.xlsx" class="btn btn-secondary btn-sm" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .xlsx
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PERSONAS ═══════ -->
+<section class="personas" id="personas">
+  <div class="container section-center">
+    <span class="section-label">Who It's For</span>
+    <h2 class="section-heading">Built For People Who Need Models, Not Modelers</h2>
+    <p class="section-sub">You know your business. We handle the spreadsheet.</p>
+    <div class="persona-grid">
+      <div class="persona-card reveal">
+        <div class="persona-emoji">&#128640;</div>
+        <h3>Startup Founders &amp; SaaS Teams</h3>
+        <p>You need a startup financial model for fundraising, planning, or a pitch deck. DraftPlan turns your assumptions into a professional Excel model with scenarios and real formulas.</p>
+      </div>
+      <div class="persona-card reveal d1">
+        <div class="persona-emoji">&#127978;</div>
+        <h3>Small Businesses, Restaurants &amp; Coffee Shops</h3>
+        <p>From restaurants and cafes to coffee shops, retail stores, and service businesses, get clear financial projections without hiring a consultant or spending weekends in Excel.</p>
+      </div>
+      <div class="persona-card reveal d2">
+        <div class="persona-emoji">&#128188;</div>
+        <h3>Managers, Analysts &amp; Consultants</h3>
+        <p>Skip the tedious setup. Get a solid starting point with proper structure, scenario analysis, and formatting &mdash; then customize to your needs. Jump-start, not replacement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRICING ═══════ -->
+<section class="pricing" id="pricing">
+  <div class="container section-center">
+    <span class="section-label">Pricing</span>
+    <h2 class="section-heading">Simple Pricing</h2>
+    <p class="section-sub">No subscription. No lock-in. You pay per model, you own the file.</p>
+    <div class="pricing-card reveal">
+      <div class="pricing-header">
+        <div class="pricing-label">Per Model</div>
+        <div class="pricing-amount">$29 &ndash; $49</div>
+        <div class="pricing-unit">per model</div>
+      </div>
+      <div class="pricing-body">
+        <ul class="pricing-features">
+          <li><span class="check">&#10003;</span> Professional Excel file</li>
+          <li><span class="check">&#10003;</span> Three scenarios (Low / Base / High)</li>
+          <li><span class="check">&#10003;</span> Real formulas, fully editable</li>
+          <li><span class="check">&#10003;</span> Validation report included</li>
+          <li><span class="check">&#10003;</span> Download instantly</li>
+        </ul>
+        <p class="pricing-note">No subscription. No lock-in.<br>You pay per model, you own the file.</p>
+        <a href="#waitlist" class="btn btn-primary">Join Waitlist &mdash; First Model Free</a>
+      </div>
+    </div>
+    <p class="pricing-compare">Compare: financial model services and freelancers often charge $500&ndash;$3,000. Templates cost $50&ndash;$100 and still need hours of customization. DraftPlan gives you a custom Excel model for $29&ndash;$49.</p>
+  </div>
+</section>
+
+<!-- ═══════ COMPARISON ═══════ -->
+<section class="comparison" id="comparison">
+  <div class="container">
+    <div class="section-center">
+      <span class="section-label">Compare</span>
+      <h2 class="section-heading">How DraftPlan Compares</h2>
+      <p class="section-sub">The quality of a freelancer. The speed of AI. The price of a template.</p>
+    </div>
+    <div class="comparison-table-wrap reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>DraftPlan</th>
+            <th>Excel Templates</th>
+            <th>ChatGPT</th>
+            <th>Freelancer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Custom to your business</td><td><span class="check-mark">&#10003;</span></td><td><span class="x-mark">&#10007;</span></td><td>Partial</td><td><span class="check-mark">&#10003;</span></td></tr>
+          <tr><td>Working Excel formulas</td><td><span class="check-mark">&#10003;</span></td><td><span class="check-mark">&#10003;</span></td><td><span class="x-mark">&#10007;</span></td><td><span class="check-mark">&#10003;</span></td></tr>
+          <tr><td>Scenario analysis</td><td><span class="check-mark">&#10003;</span></td><td>Rare</td><td><span class="x-mark">&#10007;</span></td><td>Sometimes</td></tr>
+          <tr><td>Quality validated</td><td><span class="check-mark">&#10003;</span></td><td><span class="x-mark">&#10007;</span></td><td><span class="x-mark">&#10007;</span></td><td>Varies</td></tr>
+          <tr><td>Ready in minutes</td><td><span class="check-mark">&#10003;</span></td><td>Hours to customize</td><td>Hours to assemble</td><td>Days to weeks</td></tr>
+          <tr><td>Price</td><td><strong>$29&ndash;49</strong></td><td>$30&ndash;100</td><td>$0&ndash;20/mo*</td><td>$500&ndash;3,000</td></tr>
+          <tr><td>You own the file</td><td><span class="check-mark">&#10003;</span></td><td><span class="check-mark">&#10003;</span></td><td>N/A</td><td><span class="check-mark">&#10003;</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="comparison-note">*ChatGPT cannot produce a formatted, multi-tab Excel file with working formulas and scenario selectors.</p>
+  </div>
+</section>
+
+<!-- ═══════ WAITLIST ═══════ -->
+<section class="waitlist" id="waitlist">
+  <div class="container">
+    <div class="waitlist-card reveal">
+      <h2>Be First in Line</h2>
+      <p class="subtitle">Get early access to custom Excel financial models for startups, small businesses, restaurants, coffee shops, real estate, and DCF.</p>
+      <form class="waitlist-form" id="waitlistForm">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="model_type">What type of model do you need?</label>
+          <select id="model_type" name="model_type">
+            <option value="" disabled selected>Select one...</option>
+            <option value="startup-saas">Startup / SaaS Projections</option>
+            <option value="small-business">Small Business / Restaurant / Coffee Shop</option>
+            <option value="real-estate">Real Estate / Rental Property</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="dcf-valuation">Investment / Valuation (DCF)</option>
+            <option value="consulting-agency">Consulting / Agency</option>
+            <option value="other">Other / Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="details">Additional details <span class="optional">(optional)</span></label>
+          <textarea id="details" name="details" placeholder="Tell us more about what you need — industry, time horizon, specific metrics..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Join the Waitlist &rarr;</button>
+      </form>
+      <p class="waitlist-note">No spam. We'll email you when we launch.</p>
+      <div class="waitlist-success" id="waitlistSuccess">
+        <div class="success-icon">&#127881;</div>
+        <h3>You're on the list!</h3>
+        <p>We'll send you early access + your free model when we launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.png" alt="DraftPlan">
+        <span>DraftPlan</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 DraftPlan. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Nav scroll ──────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+
+/* ── Mobile menu ─────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('active');
+}));
+
+/* ── Scroll reveal ───────────────────────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ════════════════════════════════════════════════
+   INTERACTIVE EXCEL MOCKUP — Scenario + Tabs
+   ════════════════════════════════════════════════ */
+const SCENARIOS = {
+  1: {
+    label: 'Conservative',
+    dashboard: {
+      rev:    ['$214,200','$239,904','$262,655','$280,640'],
+      cogs:   ['($89,964)','($98,761)','($107,047)','($114,461)'],
+      gp:     ['$124,236','$141,143','$155,608','$166,179'],
+      opex:   ['($110,862)','($117,715)','($124,987)','($132,706)'],
+      ebitda: ['$13,374','$23,428','$30,621','$33,473'],
+      margin: ['6.2%','9.8%','11.7%','11.9%'],
+    },
+    pnl: {
+      rev:  ['$214,200','$239,904','$262,655','$280,640'],
+      cogs: ['($89,964)','($98,761)','($107,047)','($114,461)'],
+      gp:   ['$124,236','$141,143','$155,608','$166,179'],
+      pay:  ['($128,000)','($133,120)','($138,445)','($143,983)'],
+      ni:   ['$5,808','$14,951','$20,863','$22,196'],
+      nm:   ['2.7%','6.2%','7.9%','7.9%'],
+    }
+  },
+  2: {
+    label: 'Base',
+    dashboard: {
+      rev:    ['$284,400','$341,280','$392,472','$431,719'],
+      cogs:   ['($113,760)','($129,686)','($141,290)','($151,102)'],
+      gp:     ['$170,640','$211,594','$251,182','$280,617'],
+      opex:   ['($127,980)','($143,338)','($156,989)','($168,371)'],
+      ebitda: ['$42,660','$68,256','$94,193','$112,246'],
+      margin: ['15.0%','20.0%','24.0%','26.0%'],
+    },
+    pnl: {
+      rev:  ['$284,400','$341,280','$392,472','$431,719'],
+      cogs: ['($129,686)','($129,686)','($141,290)','($151,102)'],
+      gp:   ['$170,640','$211,594','$251,182','$280,617'],
+      pay:  ['($175,000)','($182,000)','($189,280)','($196,851)'],
+      ni:   ['$28,440','$51,192','$74,518','$95,165'],
+      nm:   ['10.0%','15.0%','19.0%','22.0%'],
+    }
+  },
+  3: {
+    label: 'Optimistic',
+    dashboard: {
+      rev:    ['$383,250','$490,560','$598,483','$694,240'],
+      cogs:   ['($137,970)','($171,696)','($203,484)','($229,099)'],
+      gp:     ['$245,280','$318,864','$394,999','$465,141'],
+      opex:   ['($149,663)','($172,397)','($197,301)','($222,158)'],
+      ebitda: ['$95,618','$146,467','$197,698','$242,983'],
+      margin: ['24.9%','29.9%','33.0%','35.0%'],
+    },
+    pnl: {
+      rev:  ['$383,250','$490,560','$598,483','$694,240'],
+      cogs: ['($137,970)','($171,696)','($203,484)','($229,099)'],
+      gp:   ['$245,280','$318,864','$394,999','$465,141'],
+      pay:  ['($228,000)','($237,120)','($246,605)','($256,469)'],
+      ni:   ['$75,432','$123,744','$170,842','$215,272'],
+      nm:   ['19.7%','25.2%','28.5%','31.0%'],
+    }
+  }
+};
+
+let currentScenario = 2;
+
+function updateScenario(val) {
+  currentScenario = val;
+  const s = SCENARIOS[val];
+  document.getElementById('scenarioValue').textContent = val;
+  document.getElementById('scenarioLabel').textContent = s.label;
+
+  // Update dropdown selection
+  document.querySelectorAll('#scenarioDropdown div').forEach(d => {
+    d.classList.toggle('sel', d.dataset.val == val);
+  });
+
+  // Dashboard
+  const d = s.dashboard;
+  for (let i = 0; i < 4; i++) {
+    const y = i + 1;
+    setCell('r-rev-'+y, d.rev[i]);
+    setCell('r-cogs-'+y, d.cogs[i]);
+    setCell('r-gp-'+y, d.gp[i]);
+    setCell('r-opex-'+y, d.opex[i]);
+    setCell('r-ebitda-'+y, d.ebitda[i]);
+    setCell('r-margin-'+y, d.margin[i]);
+  }
+
+  // P&L
+  const p = s.pnl;
+  for (let i = 0; i < 4; i++) {
+    const y = i + 1;
+    setCell('p-rev-'+y, p.rev[i]);
+    setCell('p-cogs-'+y, p.cogs[i]);
+    setCell('p-gp-'+y, p.gp[i]);
+    setCell('p-pay-'+y, p.pay[i]);
+    setCell('p-ni-'+y, p.ni[i]);
+    setCell('p-nm-'+y, p.nm[i]);
+  }
+
+  // Flash animation
+  document.querySelectorAll('.excel-grid td:not(.row-num):not(.cell-label):not(.cell-header):not(.cell-section)').forEach(td => {
+    td.style.transition = 'none';
+    td.style.background = '#FEF9C3';
+    requestAnimationFrame(() => {
+      td.style.transition = 'background 0.8s ease';
+      // Restore appropriate background
+      setTimeout(() => {
+        if (td.classList.contains('cell-input')) td.style.background = '#EBF3FB';
+        else if (td.classList.contains('cell-total')) td.style.background = '#E2EFDA';
+        else if (td.classList.contains('cell-highlight')) td.style.background = '#FFF2CC';
+        else if (td.classList.contains('cell-scenario-box') || td.classList.contains('cell-scenario-label') || td.classList.contains('cell-scenario-display')) td.style.background = '#FCE4D6';
+        else td.style.background = '#fff';
+      }, 50);
+    });
+  });
+}
+
+function setCell(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+// Scenario dropdown toggle
+const scenarioCell = document.getElementById('scenarioCell');
+const scenarioDropdown = document.getElementById('scenarioDropdown');
+scenarioCell.addEventListener('click', (e) => {
+  e.stopPropagation();
+  scenarioDropdown.style.display = scenarioDropdown.style.display === 'none' ? 'block' : 'none';
+});
+scenarioDropdown.querySelectorAll('div').forEach(opt => {
+  opt.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateScenario(parseInt(opt.dataset.val));
+    scenarioDropdown.style.display = 'none';
+    if (window.umami) umami.track('excel_interact', { action: 'scenario_change', value: opt.dataset.val });
+  });
+});
+document.addEventListener('click', () => scenarioDropdown.style.display = 'none');
+
+// Excel sheet tabs
+document.querySelectorAll('.excel-sheet-tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.excel-sheet-tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.excel-tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.panel).classList.add('active');
+
+    // Update formula bar contextually
+    const panel = btn.dataset.panel;
+    const ref = document.getElementById('cellRef');
+    const fx = document.getElementById('formulaText');
+    if (panel === 'panel-dashboard') { ref.textContent = 'B3'; fx.textContent = '=CHOOSE(B2,"Conservative","Base","Optimistic")'; }
+    else if (panel === 'panel-assumptions') { ref.textContent = 'B4'; fx.textContent = '120'; }
+    else if (panel === 'panel-pnl') { ref.textContent = 'B3'; fx.textContent = "=INDEX(Assumptions!B4:D4,1,Dashboard!$B$2)*Assumptions!B5*365"; }
+    else if (panel === 'panel-validation') { ref.textContent = 'B3'; fx.textContent = '="PASS"'; }
+    if (window.umami) umami.track('excel_interact', { action: 'tab_switch', tab: panel.replace('panel-','') });
+  });
+});
+
+/* ── Agent flow animation ────────────────────── */
+function animateAgents() {
+  const nodes = ['agent-architect','agent-coder','agent-challenger'];
+  let i = 0;
+  function step() {
+    nodes.forEach(n => document.getElementById(n).classList.remove('active-agent'));
+    if (i < nodes.length) {
+      document.getElementById(nodes[i]).classList.add('active-agent');
+      i++;
+      setTimeout(step, 1200);
+    } else {
+      i = 0;
+      setTimeout(step, 2000);
+    }
+  }
+  step();
+}
+const agentObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateAgents(); agentObs.disconnect(); } });
+}, { threshold: 0.5 });
+agentObs.observe(document.getElementById('agentFlow'));
+
+/* ── Waitlist form ───────────────────────────── */
+const form = document.getElementById('waitlistForm');
+const success = document.getElementById('waitlistSuccess');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = {
+    email: form.email.value,
+    model_type: form.model_type.value,
+    details: form.details.value
+  };
+  try {
+    const res = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.querySelector('.waitlist-note').style.display = 'none';
+      success.style.display = 'block';
+      if (window.umami) umami.track('waitlist_signup', { model_type: data.model_type || 'none' });
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    alert('Connection error. Please try again.');
+  }
+});
+
+/* ── Analytics ───────────────────────────────── */
+const sections = ['hero','problem','how-it-works','features','example','personas','pricing','comparison','waitlist'];
+const sObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && window.umami) umami.track('section_view', { section: e.target.id });
+  });
+}, { threshold: 0.3 });
+sections.forEach(id => { const el = document.getElementById(id); if (el) sObs.observe(el); });
+document.querySelectorAll('.btn-primary').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (window.umami) {
+      const s = btn.closest('section');
+      umami.track('cta_click', { location: s ? s.id : 'nav' });
+    }
+  });
+});
+document.querySelectorAll('.example-download .btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (window.umami) umami.track('sample_download', { file: btn.getAttribute('href') });
+  });
+});
+</script>
+</body>
+</html>
