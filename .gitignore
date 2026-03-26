@@ -4,8 +4,7 @@ __pycache__/
 .claude/
 C--Users-ArtemSviridov-modelling-team/
 tocken_reference/
-webpage/AdsGoogleData/
-webpage/api/
-webpage/*.png
-webpage/sample_models/
-consulting-output/ArtemSviridov/
+webpage/
+consulting-output/
+*.skill
+*.txt
