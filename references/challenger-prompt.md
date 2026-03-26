@@ -58,6 +58,7 @@ This is the most common source of bugs. Check thoroughly:
 - Do totals equal the sum of their components? Spot-check 2-3.
 - Is the time horizon consistent across all tabs?
 - Are column mappings consistent (does Year 1 = same column everywhere)?
+- **Subtotal locality check**: every SUM/subtotal formula must reference cells on the same worksheet. A formula like `='P&L'!C25` used as a subtotal on the Dashboard is a **Critical** error — line items may cross-link to other sheets, but the aggregation must happen locally. Check every bold/total row on every tab.
 
 ### 6. Output Validation
 - IRR: does the CF array start with a NEGATIVE value (initial investment/outflow)? IRR on all-positive flows is a critical error — it means the initial investment is missing. The range must begin with Year 0 = negative CAPEX or -Enterprise Value.
