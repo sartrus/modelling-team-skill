@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "sartrus",
+  "description": "Artem Sviridov's Claude Code plugins",
+  "owner": {
+    "name": "Artem Sviridov"
+  },
+  "plugins": [
+    {
+      "name": "modelling-team-skill",
+      "description": "Three-agent financial modelling team: Architect, Coder, Challenger. Builds polished Excel models with scenarios, dashboards, and validated formulas.",
+      "source": "./"
+    }
+  ]
+}
