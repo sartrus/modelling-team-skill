@@ -43,6 +43,11 @@ For each tab: name, purpose, data received from other tabs, data sent to other t
 - All hardcoded inputs organized by section
 - Three columns for each assumption: Low / Base / High
 - These columns are never referenced directly by calculation tabs — they are always accessed via INDEX(..., Dashboard!$B$2)
+- **Decompose cost and revenue drivers into their constituent assumptions.** Never use a single "Marketing spend = $X" assumption when the actual driver is a chain of metrics. Instead expose each lever explicitly. Examples:
+  - Marketing spend → decompose into: Monthly ad spend ($) × CPC ($) → Clicks → × Conversion rate (%) → New customers → × CAC ($) as a derived check
+  - Churn → Monthly churn rate (%), not just "customers lost"
+  - Headcount cost → Headcount (n) × Average salary ($) × Employer burden (%)
+  - This decomposition belongs in the Assumptions tab so users can stress-test individual levers, not just the aggregate
 
 **Calculation tabs** (one or more):
 - All formulas referencing scenario-dependent assumptions must use: =INDEX(Assumptions!B[row]:D[row], 1, Dashboard!$B$2)
@@ -98,6 +103,7 @@ Specify exactly what appears on the Dashboard:
 ## Rules
 - Every formula must be written in pseudo-Excel. No ambiguity.
 - Separate inputs from calculations. No magic numbers in formulas.
+- **Subtotals must be calculated using cells on the same tab.** Individual line items may use cross-sheet links to pull values from other tabs, but the subtotal/sum formula itself must only reference cells within the same worksheet. Example: Dashboard may pull Revenue from P&L via a cross-sheet link into Dashboard!B10 and COGS into Dashboard!B11 — but the Gross Profit subtotal must be `=B10-B11`, not `='P&L'!GrossProfit`. This rule applies to every tab in the model.
 - Handle edge cases: IF wrapping for division by zero, IFERROR for IRR.
 - Cross-sheet references must be explicit: ='Tab Name'!C10
 - All scenario-dependent assumptions accessed via INDEX + Dashboard selector — never hardcode a specific scenario column in calculation formulas.

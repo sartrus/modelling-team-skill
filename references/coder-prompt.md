@@ -176,6 +176,17 @@ IRR requires a negative initial outflow at Year 0 — without it, IRR on all-pos
 
 Even in light valuation models where there's no explicit CAPEX, construct the IRR stream as: Year 0 = -NPV (or -Enterprise Value), then Years 1-5 FCF (with TV added to last year). This gives the investor's IRR if they bought at fair value.
 
+### Subtotal rule
+Subtotals and SUM formulas must only reference cells on the same worksheet. Cross-sheet links are allowed for pulling individual line items onto a tab, but the aggregation formula must sum those local cells — never reference a subtotal cell from another sheet.
+
+```python
+# CORRECT — Dashboard subtotal sums its own cells
+calc(ws_dash, r, col, "=B10-B11")          # Gross Profit on Dashboard
+
+# WRONG — subtotal delegates to another sheet
+calc(ws_dash, r, col, "='P&L'!C25")        # Never do this for a subtotal
+```
+
 ### Error prevention
 - Division: `IF(denominator=0,0,formula)` or `IFERROR()`
 - IRR: `=IFERROR(IRR(range),"N/A")` — range MUST start with a negative value
