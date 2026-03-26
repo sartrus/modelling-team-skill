@@ -1,13 +1,6 @@
 ---
 name: modelling-team
-description: >
-  Build Excel financial models using a three-agent modelling team: Architect (designs structure),
-  Coder (writes Python/openpyxl), and Challenger (stress-tests logic). Use this skill whenever the
-  user asks to build, create, or construct an Excel model, financial model, investment model,
-  valuation model, DCF, LBO, P&L, or any quantitative spreadsheet. Also trigger when the user says
-  "model this", "build me a spreadsheet for", or mentions building projections, scenarios, or
-  forecasts in Excel. Even if the user doesn't say "Excel" explicitly — if they're asking for a
-  quantitative model with assumptions, formulas, and outputs, use this skill.
+description: Build Excel financial models using a three-agent team (Architect, Coder, Challenger). Use when the user asks to build a financial model, Excel model, DCF, LBO, P&L, valuation, projections, forecast, or any quantitative spreadsheet with assumptions and scenarios.
 ---
 
 # Modelling Team
