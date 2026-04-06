@@ -62,9 +62,38 @@ This is the most common source of bugs. Check thoroughly:
 
 ### 6. Output Validation
 - IRR: does the CF array start with a NEGATIVE value (initial investment/outflow)? IRR on all-positive flows is a critical error — it means the initial investment is missing. The range must begin with Year 0 = negative CAPEX or -Enterprise Value.
+- IRR / NPV use the **Valuation CF stream** (with Terminal Value added in the last year).
+- PbP / DPbP use the **Operating CF stream** (ex-Terminal Value). If the Payback formula references a CF row that includes TV, that is a **Critical** error — the model "pays back via TV", which is lying about cash recovery. Verify by tracing the cell range.
 - PBP/DPBP: does interpolation work for Year 1 payback? Last year? Never?
 - Cumulative CF: does it accumulate correctly?
 - Percentages: margin % divides by revenue not cost?
+
+### 6a. Excel Compatibility Audit (CRITICAL)
+Scan all formulas for dynamic-array patterns. Any of the following in a model intended for shareholder distribution = **Critical** (FAIL):
+- `MATCH(TRUE, ...)` or `MATCH(FALSE, ...)`
+- `FILTER(...)`
+- `SORT(...)`
+- `UNIQUE(...)`
+- `XLOOKUP(...)` with implicit spilling
+
+Pre-2021 Excel will throw `#NAME` on these. Use nested IF for Payback, INDEX/MATCH for lookups, SUMIFS/COUNTIFS for filtered aggregation.
+
+### 6b. Source Quality Audit
+- **URL specificity**: spot-check at least 5 URLs in the Assumptions tab. Flag any homepage / category page / generic landing page URLs as **Critical**. URLs must lead to the specific page containing the data point.
+- **Source independence**: scan the Assumptions URL column and any Sources tab for references to internal model files, unpublished spreadsheets, or proprietary documents. Flag as **Warning** — internal files are not external sources and break the externally-verifiable distinction.
+
+### 6c. Cross-Reference Audit
+- Are there other financial models in the working directory? If yes, did this model use consistent numbers for shared variables (member counts, prices, ramp curves, captive customer projections)? Silent divergence from a related model = **Warning**.
+
+### 6d. Product business — Production / Capacity check
+If the model represents a product business (manufacturing, compounding, food/beverage, hardware):
+- Is COGS mechanically derived from production volume × unit input cost, NOT a top-down COGS % of revenue? Top-down COGS in a product model = **Warning**.
+- Is there a capacity utilization sanity check row? Is Y5 utilization between 10% and 90%? If outside that band, flag for user attention (over-capitalized or implausibly maxed).
+
+### 6e. SaaS / subscription — CAC funnel check
+If the model represents a SaaS / subscription business:
+- Is marketing spend modeled as a CAC funnel (channel mix × CPC × conversion %), NOT a single $ assumption? A monolithic "marketing spend" line in a SaaS model = **Warning**.
+- Is per-channel CPC and conversion rate scenario-flexed?
 
 ### 8. Zoom Level
 - Every worksheet should have `zoomScale = 85` (not the default 100%). Check `ws.sheet_view.zoomScale` or the XML. Missing zoom setting = Note (not Critical, but flag it).
@@ -76,6 +105,10 @@ This is the most common source of bugs. Check thoroughly:
 - Section headers present with dark fill and white text?
 - Freeze panes set?
 - Font is Arial throughout?
+- **No empty spacer columns**: scan each tab for narrow empty columns used for indentation. Hierarchy must be created via `Alignment(indent=N)` on label cells, never via empty columns. Empty columns = **Warning**.
+- **Calendar year headers**: time-series tabs use 2026, 2027, 2028 (or whatever start year), not Y0/Y1/Y2 in column headers. Y-prefixed period labels in headers = **Warning**.
+- **No alphanumeric line IDs**: column A should not contain row IDs like `CX-01`, `REV-02`. If present = **Warning**.
+- **Notes / Rationale column** populated on CAPEX and Pre-OPEX tabs for every line item. Empty rationale cells = **Note**.
 
 ## Output
 

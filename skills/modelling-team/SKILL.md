@@ -15,7 +15,15 @@ User request
     ▼
 ┌─ Step 0: Clarify scope ─────────────────────────────────┐
 │  Ask: Heavy (multi-tab) or Light (single-tab)?           │
-│  Gather context, confirm output path and key metrics.    │
+│  Run the Expanded Scoping Checklist (see Step 0 below).  │
+└──────────────────────────────────────────────────────────┘
+    │
+    ▼
+┌─ Step 0.5: RESEARCH  (optional, Sonnet) ────────────────┐
+│  For models where economic assumptions materially drive  │
+│  the output, run a research sprint on the top 5–15       │
+│  drivers BEFORE the Architect bakes them in. Output:     │
+│  assumption register with sources, URLs, confidence.     │
 └──────────────────────────────────────────────────────────┘
     │
     ▼
@@ -54,13 +62,67 @@ Before spawning agents, ask the user:
 - **Light**: Single worksheet. Assumptions at the top, calculations below, outputs/KPIs at the bottom.
 - **Heavy**: Multiple worksheets with a **Dashboard** tab as the front page, an **Assumptions** tab, one or more calculation/P&L tabs, and a **Scenario Selector** on the Dashboard that drives all scenario-dependent formulas across the model.
 
-Also confirm: output file path, data/assumptions to feed in, time horizon, and key metrics (IRR, NPV, PBP, EBITDA, etc.).
+### Expanded Scoping Checklist
+
+Don't stop at "heavy or light". Walk through this checklist with the user — surfacing these questions upfront saves 1–2 iteration cycles later.
+
+**Required:**
+- [ ] Heavy or light?
+- [ ] Output file path
+- [ ] **Start year** (e.g., 2026) and time horizon (# years) — calendar years, not Y0/Y1
+- [ ] Currency / units
+- [ ] Key metrics required (NPV, IRR, PbP, DPbP, EBITDA, FCF, etc.)
+
+**Recommended:**
+- [ ] Full P&L (D&A, tax, NI) or EBITDA-only? (default: full P&L for company models)
+- [ ] Equity structure: single owner or multi-party (joint venture, sponsor co-investment)? If multi-party, model BOTH project-level and equity-holder-level returns.
+- [ ] Reference model in working folder to inherit formatting / cross-check from?
+- [ ] Source quality: research-validated assumptions required, or illustrative/synthetic? If research-validated, propose **Step 0.5 Research sprint** before Architect.
+- [ ] Is this a product business with physical output? (drives Production → COGS mechanical linkage)
+- [ ] Is this a SaaS / subscription business? (drives marketing decomposition into channel mix × CPC × conversion %)
+- [ ] Tax jurisdiction (drives tax rate, NOL/CFL mechanic)
+- [ ] WACC / discount rate / terminal value approach (multiple-based, Gordon growth, both)
+- [ ] Sensitivity scenarios beyond Low/Base/High (e.g., debt vs equity, partner share variants)
+- [ ] Output format: shareholder deck (clean Outputs tab), internal working model, or both?
+
+## Step 0.5: Research Sprint (optional but recommended for heavy models)
+
+**When to run:** Whenever the model's economic assumptions are externally researchable (CAPEX line items, salaries, lease rates, raw material costs, market sizes, conversion benchmarks). Skip for synthetic / educational / illustrative models.
+
+**How:** Spawn a `general-purpose` Agent with web access. Task it with:
+1. Identify the top 5–15 assumptions that most affect the model output.
+2. Find external sources for each (specific-page URLs, not homepages).
+3. Return a structured assumption register: value, source description, URL, confidence (High/Med/Low), tag (`research-sourced` vs `needs verification — RFQ required`).
+4. NEVER cite internal/proprietary files (other company models, unpublished docs) — those are not external sources.
+
+The Architect then receives this register and bakes the verified numbers into the blueprint, with verification flags propagating into the Assumptions tab.
 
 ## Step 1: Model Architect
 
 Spawn a **general-purpose Agent**. This agent does NOT write code — it designs the model structure.
 
-Read `references/architect-prompt.md` for the full agent prompt template. Fill in: `{USER_REQUEST}`, `{MODEL_MODE}`, `{OUTPUT_PATH}`, `{ADDITIONAL_CONTEXT}`.
+Read `references/architect-prompt.md` for the full agent prompt template. Fill in: `{USER_REQUEST}`, `{MODEL_MODE}`, `{OUTPUT_PATH}`, `{ADDITIONAL_CONTEXT}`, `{RESEARCH_REGISTER}` (optional, from Step 0.5).
+
+### Architectural defaults (apply unless user says otherwise)
+
+These defaults exist because they were learned the hard way through iteration. The Architect prompt enforces them — but you should know they exist so you can confirm them in scoping:
+
+1. **Calendar year labels** (2026, 2027, …) — never Y0/Y1/Y2 in column headers. Three-row time header: period index / calendar year / year-end date.
+2. **All assumptions on one tab** — including year-dependent ramps (membership curves, hiring schedules, capture %). These live as MATRIX BLOCKS (scenario rows × year columns) on the Assumptions tab. No separate Scenario_Timing tabs.
+3. **Sources inline in Assumptions** — Source description and URL columns on the same row as each value. URLs must be specific-page (not homepages). Internal/proprietary files are NOT valid sources.
+4. **Valuation in the Cash Flow tab** — NPV/IRR/PbP/DPbP/CoC sit in a section appended to the Cash_Flow tab, not on a separate Valuation tab.
+5. **Two parallel CF streams**: Operating CF (ex-TV) feeds Payback / Discounted Payback; Valuation CF (with TV in last year) feeds NPV / IRR. Mixing them is a critical error.
+6. **Full P&L by default** — D&A, interest, EBT, NOL/CFL mechanic, tax, NI. EBITDA-only is acceptable only when explicitly scoped.
+7. **Dual returns view** when equity is shared — Project returns + Equity-holder returns, on parallel CF streams.
+8. **Production → COGS mechanical linkage** for product businesses — COGS = volume × weighted unit cost, never a top-down COGS % of revenue. Include a capacity utilization sanity check row.
+9. **SaaS marketing decomposed via CAC** — for any SaaS / subscription business, marketing spend MUST be modeled as `channel mix × CPC per channel × conversion % → new customers`, not a single "marketing spend = $X" assumption. Each channel (Google, Meta, LinkedIn, organic, etc.) gets its own CPC and conversion %, scenario-flexed.
+10. **Hierarchy via `Alignment(indent=N)`** — never empty spacer columns. Every column has real content.
+11. **No alphanumeric line IDs** in column A (e.g., `CX-01`, `REV-02`) — labels and row numbers are sufficient.
+12. **No dynamic-array formulas** (`MATCH(TRUE,…)`, `FILTER`, `SORT`, `UNIQUE`, `XLOOKUP` with spilling) — they break with `#NAME` in pre-2021 Excel. Use nested-IF for Payback, INDEX/MATCH for lookups.
+13. **Notes / rationale column** on CAPEX and Pre-OPEX — every line item gets a 1-2 sentence explanation.
+14. **Staff tabs** use explicit `# FTE × $/FTE × Total` columns — never bundle headcount and comp.
+15. **Inherit reference model formatting** if the user provides one in the working folder.
+16. **Cross-check related models** in the working folder for shared variables (member counts, prices, ramps).
 
 ### Blueprint Structure
 

@@ -71,12 +71,16 @@ def hc(ws, r, col, text, bg=MED_BLUE):
     c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
     c.border = tb(); return c
 
-def lbl(ws, r, col, text, bold=False, bg=None):
+def lbl(ws, r, col, text, bold=False, bg=None, indent=0):
     c = ws.cell(r, col, text)
     c.font = F_BOLD if bold else F_LBL
     c.fill = fill(bg or (LT_GREY if bold else WHITE))
-    c.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
+    c.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True, indent=indent)
     c.border = tb(); return c
+
+def lbl_indent(ws, r, col, text, indent=1, bold=False):
+    """Hierarchy via Alignment.indent — NEVER via empty spacer columns."""
+    return lbl(ws, r, col, text, bold=bold, indent=indent)
 
 def inp(ws, r, col, val, fmt="$#,##0;($#,##0);-"):
     c = ws.cell(r, col, val)
@@ -109,6 +113,46 @@ def note_row(ws, row, text, end_col="G", h=50):
 ```
 
 Use ONLY these helpers and palette. Do NOT invent your own color scheme or font choices.
+
+### Hierarchy via indent — NEVER via empty spacer columns
+
+This is a hard rule. Do NOT create narrow empty spacer columns (width 2.5, 3, 5.5, etc.) to indent sub-lines visually. Empty columns waste horizontal space, look broken under frozen-pane scrolling, and feel unfinished.
+
+Use cell-level indentation:
+- `indent=0` → section headers
+- `indent=1` → main lines
+- `indent=2` → sub-lines
+- `indent=3` → sub-sub-lines
+
+```python
+lbl_indent(ws, row, 1, "Revenue", indent=0, bold=True)
+lbl_indent(ws, row+1, 1, "Subscription revenue", indent=1)
+lbl_indent(ws, row+2, 1, "  Self-serve tier", indent=2)
+lbl_indent(ws, row+3, 1, "  Enterprise tier", indent=2)
+```
+
+**Every column in the worksheet must have real content.** No empty spacer columns anywhere.
+
+### Time-series header (3 rows)
+
+Every time-series tab gets a 3-row time header — calendar years are the primary label, never Y0/Y1/Y2:
+
+```python
+# Row N: period index (0, 1, 2, ...)
+# Row N+1: calendar year (2026, 2027, ...)
+# Row N+2: year-end date (2026-12-31, ...)
+START_YEAR = 2026
+N_YEARS = 6
+for i in range(N_YEARS):
+    col = 3 + i  # data starts column C
+    hc(ws, header_row,     col, i)
+    hc(ws, header_row + 1, col, START_YEAR + i)
+    hc(ws, header_row + 2, col, f"{START_YEAR + i}-12-31")
+```
+
+### No alphanumeric line IDs
+
+Do NOT put alphanumeric row IDs (e.g., `CX-01`, `PO-03`, `REV-02`) in column A or anywhere visible. Row identification is via the label text + row number — that is sufficient. Line IDs are an anti-pattern for shareholder-facing models.
 
 ### Scenario selector (heavy mode)
 
@@ -166,6 +210,56 @@ from openpyxl.worksheet.views import SheetView
 ws.sheet_view = SheetView(zoomScale=85)
 # Note: set this BEFORE freeze_panes, or set zoomScale on the existing view
 ```
+
+### Anti-pattern: dynamic-array formulas (CRITICAL)
+
+Do NOT use these patterns. They require Excel 365 / 2021 and break with `#NAME` in older Excel versions including most enterprise installs:
+
+- `=MATCH(TRUE, range>=0, 0)`
+- `=FILTER(...)`
+- `=SORT(...)`
+- `=UNIQUE(...)`
+- `=XLOOKUP(...)` with dynamic spilling
+
+**Compatible alternatives:**
+- Payback: nested IF chain (template below)
+- Lookups: `INDEX/MATCH` with explicit ranges
+- Filtering / conditional sums: `SUMIFS`, `COUNTIFS`, `AVERAGEIFS`
+
+**Payback Period nested IF template** — for a 6-year cumulative CF in cells C30:H30 with annual CF in C31:H31:
+```
+=IF(C30>=0, 0,
+  IF(D30>=0, 1 + (-C30/D31),
+    IF(E30>=0, 2 + (-D30/E31),
+      IF(F30>=0, 3 + (-E30/F31),
+        IF(G30>=0, 4 + (-F30/G31),
+          IF(H30>=0, 5 + (-G30/H31),
+            "Not within horizon"))))))
+```
+
+Use the same structure for Discounted Payback on the discounted cumulative CF row.
+
+### Payback uses Operating CF (ex-Terminal Value)
+
+Build TWO parallel CF streams on Cash_Flow:
+1. **Operating CF** — Year 0 = -investment, Years 1-N = FCFF, NO Terminal Value. Cumulative of this row feeds Payback / DPbP.
+2. **Valuation CF** — identical, but with TV added to Year N. Feeds NPV / IRR.
+
+A model that "pays back via TV" is lying about cash recovery — TV is a multiple-based exit assumption, not money in the bank. Never feed the Valuation CF stream into Payback.
+
+### URL specificity (Assumptions Source URL column)
+
+When populating the Source URL column on Assumptions, use the EXACT page URL containing the data point — never a homepage or category landing page:
+- ✓ `https://cooperfitch.ae/wp-content/uploads/2024/12/Salary-Guide-UAE-2025-Cooper-Fitch.pdf`
+- ✗ `https://www.cooperfitch.ae/`  ← anti-pattern
+- ✓ `https://mohap.gov.ae/en/services/licensing-of-a-pharmaceutical-facility`
+- ✗ `https://mohap.gov.ae/`  ← anti-pattern
+
+If a specific page is not publicly available (paywalled report, RFQ-only pricing), leave the URL cell blank and write "Not publicly available — RFQ required" in the source description.
+
+### No internal/proprietary file citations
+
+Internal / proprietary files (other company models, unpublished analyses, private documents) must NOT appear as URLs in the Assumptions tab. Numbers sourced from internal files use the source description "Internal estimate" (or similar generic descriptor) with a blank URL cell.
 
 ### IRR cash flow construction
 IRR requires a negative initial outflow at Year 0 — without it, IRR on all-positive cash flows is meaningless. Always build a dedicated "Cash Flow for IRR" row:
